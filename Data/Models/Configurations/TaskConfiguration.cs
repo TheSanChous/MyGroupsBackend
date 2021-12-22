@@ -25,6 +25,8 @@ namespace Data.Models.Configurations
             builder.HasOne(task => task.Customer);
 
             builder.HasOne(task => task.Group);
+
+            builder.HasOne(task => task.File);
         }
     }
 }
