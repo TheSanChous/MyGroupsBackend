@@ -11,6 +11,8 @@ namespace Data.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public string HashedPassword { get; set; }
+        public byte[] Salt { get; set; }
         public UserSettings Settings { get; set; }
         public ICollection<UserGroup> Groups { get; set; }
     }

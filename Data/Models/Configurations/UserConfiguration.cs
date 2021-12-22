@@ -20,6 +20,10 @@ namespace Data.Models.Configurations
 
             builder.Property(user => user.Email);
 
+            builder.Property(user => user.HashedPassword);
+
+            builder.Property(user => user.Salt);
+
             builder.HasOne(user => user.Settings)
                 .WithOne(settings => settings.User)
                 .HasForeignKey<UserSettings>(userSettings => userSettings.UserId);
