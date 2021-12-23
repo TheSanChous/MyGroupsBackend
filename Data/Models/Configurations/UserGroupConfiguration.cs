@@ -16,11 +16,9 @@ namespace Data.Models.Configurations
 
             builder.HasOne(userGroup => userGroup.User);
 
-            builder.HasOne(userGroup => userGroup.Group)
-                .WithMany(group => group.Users);
+            builder.HasOne(userGroup => userGroup.Group);
 
-            builder.HasOne(userGroup => userGroup.User)
-                .WithMany(user => user.Groups);
+            builder.HasOne(userGroup => userGroup.User);
 
             builder.HasOne(userGroup => userGroup.RoleInGroup);
         }

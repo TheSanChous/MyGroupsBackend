@@ -13,6 +13,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyGroupsAPI.Configurations;
 using MyGroupsAPI.Services;
+using MyGroupsAPI.Services.Authorization;
+using MyGroupsAPI.Services.Groups;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +39,10 @@ namespace MyGroupsAPI
         {
             services.AddSingleton<AuthenticationOptions>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IAuthorizationService, AuthorizationService>();
+
+            services.AddScoped<IGroupService, GroupService>();
+
             services.AddDbContext<DatabaseContext>(options =>
             {
                 options.UseNpgsql(Configuration.GetSection("ConnectionStrings:Default").Value);
@@ -57,6 +63,11 @@ namespace MyGroupsAPI
                 });
 
             services.AddControllers();
+
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             services.AddSwaggerGen(c =>
             {
@@ -80,6 +91,8 @@ namespace MyGroupsAPI
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseClaimAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

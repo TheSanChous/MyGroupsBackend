@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20211222091557_add-user-password")]
-    partial class adduserpassword
+    [Migration("20211223003241_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -155,6 +155,18 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RoleUserInGroups");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("227cd08c-247f-4b7d-a9b6-d5451387e52f"),
+                            Title = "Admin"
+                        },
+                        new
+                        {
+                            Id = new Guid("a5ec79bc-40b8-467f-a24c-9eeeecbeaff5"),
+                            Title = "Member"
+                        });
                 });
 
             modelBuilder.Entity("Data.Models.Schelude", b =>
@@ -397,7 +409,7 @@ namespace Data.Migrations
             modelBuilder.Entity("Data.Models.UserGroup", b =>
                 {
                     b.HasOne("Data.Models.Group", "Group")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("GroupId");
 
                     b.HasOne("Data.Models.RoleUserInGroup", "RoleInGroup")
@@ -405,7 +417,7 @@ namespace Data.Migrations
                         .HasForeignKey("RoleInGroupId");
 
                     b.HasOne("Data.Models.User", "User")
-                        .WithMany("Groups")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Group");
@@ -436,8 +448,6 @@ namespace Data.Migrations
                     b.Navigation("Publications");
 
                     b.Navigation("Schelude");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Data.Models.Schelude", b =>
@@ -447,8 +457,6 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.User", b =>
                 {
-                    b.Navigation("Groups");
-
                     b.Navigation("Settings");
                 });
 #pragma warning restore 612, 618

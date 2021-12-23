@@ -114,9 +114,11 @@ namespace MyGroupsAPI.Services
 
             bytePassword.ToList().AddRange(salt);
 
+            Console.WriteLine(Encoding.UTF8.GetString(bytePassword));
+
             byte[] hash = sha256.ComputeHash(bytePassword);
 
-            return Encoding.UTF8.GetString(bytePassword);
+            return Encoding.UTF8.GetString(hash);
         }
 
         private byte[] GenerateSalt(int length)

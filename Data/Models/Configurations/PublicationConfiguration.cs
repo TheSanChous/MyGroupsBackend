@@ -20,8 +20,7 @@ namespace Data.Models.Configurations
 
             builder.Property(publication => publication.Title);
 
-            builder.HasOne(publication => publication.Group)
-                .WithMany(group => group.Publications);
+            builder.HasOne(publication => publication.Group);
 
             builder.HasOne(publication => publication.User);
         }

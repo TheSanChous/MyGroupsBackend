@@ -18,14 +18,9 @@ namespace Data.Models.Configurations
 
             builder.Property(group => group.Description);
 
-            builder.HasOne(group => group.Schelude)
-                .WithOne(schelude => schelude.Group);
+            builder.HasOne(group => group.Schelude);
 
-            builder.HasMany(group => group.Users)
-                .WithOne(user => user.Group);
-
-            builder.HasMany(group => group.Publications)
-                .WithOne(publication => publication.Group);
+            builder.HasMany(group => group.Publications);
         }
     }
 }

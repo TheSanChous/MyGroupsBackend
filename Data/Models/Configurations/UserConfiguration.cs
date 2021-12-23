@@ -23,13 +23,6 @@ namespace Data.Models.Configurations
             builder.Property(user => user.HashedPassword);
 
             builder.Property(user => user.Salt);
-
-            builder.HasOne(user => user.Settings)
-                .WithOne(settings => settings.User)
-                .HasForeignKey<UserSettings>(userSettings => userSettings.UserId);
-
-            builder.HasMany(user => user.Groups)
-                .WithOne(group => group.User);
         }
     }
 }

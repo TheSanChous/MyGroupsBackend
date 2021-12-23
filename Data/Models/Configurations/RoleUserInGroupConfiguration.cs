@@ -15,6 +15,21 @@ namespace Data.Models.Configurations
             builder.HasKey(role => role.Id);
 
             builder.Property(role => role.Title);
+
+            builder.HasData(new[]
+            {
+                new RoleUserInGroup
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "Admin"
+                },
+                new RoleUserInGroup
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "Member"
+                }
+            });
+               
         }
     }
 }

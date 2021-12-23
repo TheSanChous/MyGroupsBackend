@@ -14,9 +14,7 @@ namespace Data.Models.Configurations
         {
             builder.HasKey(schelude => schelude.Id);
 
-            builder.HasOne(schelude => schelude.Group)
-                .WithOne(group => group.Schelude)
-                .HasForeignKey<Schelude>(schelude => schelude.GroupId);
+            builder.HasOne(schelude => schelude.Group);
 
             builder.HasMany(schelude => schelude.Items);
         }

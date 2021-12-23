@@ -4,5 +4,6 @@
     {
         public byte[] Data { get; set; }
         public string Type { get; set; }
+        public User Owner { get; set; }
     }
 }

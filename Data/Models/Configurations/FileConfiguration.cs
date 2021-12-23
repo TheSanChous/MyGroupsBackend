@@ -17,6 +17,8 @@ namespace Data.Models.Configurations
             builder.Property(file => file.Data);
 
             builder.Property(file => file.Type);
+
+            builder.HasOne(file => file.Owner);
         }
     }
 }

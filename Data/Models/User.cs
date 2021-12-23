@@ -14,6 +14,5 @@ namespace Data.Models
         public string HashedPassword { get; set; }
         public byte[] Salt { get; set; }
         public UserSettings Settings { get; set; }
-        public ICollection<UserGroup> Groups { get; set; }
     }
 }

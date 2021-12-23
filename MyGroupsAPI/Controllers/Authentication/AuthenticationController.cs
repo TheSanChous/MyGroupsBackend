@@ -24,7 +24,7 @@ namespace MyGroupsAPI.Controllers.Authentication
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
             var token = await authenticationService.LoginAsync(loginModel);
-
+            
             return Ok(token);
         }
 

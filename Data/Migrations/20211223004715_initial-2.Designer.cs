@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20211222085823_initial")]
-    partial class initial
+    [Migration("20211223004715_initial-2")]
+    partial class initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -155,6 +155,18 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RoleUserInGroups");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("f35e8dca-3bf5-4abf-9ba7-0d7b3860695a"),
+                            Title = "Admin"
+                        },
+                        new
+                        {
+                            Id = new Guid("f1cc6a2c-9c1d-498f-900e-26609ccd047a"),
+                            Title = "Member"
+                        });
                 });
 
             modelBuilder.Entity("Data.Models.Schelude", b =>
@@ -249,8 +261,14 @@ namespace Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
 
+                    b.Property<string>("HashedPassword")
+                        .HasColumnType("text");
+
                     b.Property<string>("LastName")
                         .HasColumnType("text");
+
+                    b.Property<byte[]>("Salt")
+                        .HasColumnType("bytea");
 
                     b.HasKey("Id");
 
@@ -336,7 +354,8 @@ namespace Data.Migrations
                 {
                     b.HasOne("Data.Models.Group", "Group")
                         .WithMany("Publications")
-                        .HasForeignKey("GroupId");
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Data.Models.User", "User")
                         .WithMany()
@@ -391,7 +410,7 @@ namespace Data.Migrations
             modelBuilder.Entity("Data.Models.UserGroup", b =>
                 {
                     b.HasOne("Data.Models.Group", "Group")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("GroupId");
 
                     b.HasOne("Data.Models.RoleUserInGroup", "RoleInGroup")
@@ -399,7 +418,7 @@ namespace Data.Migrations
                         .HasForeignKey("RoleInGroupId");
 
                     b.HasOne("Data.Models.User", "User")
-                        .WithMany("Groups")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Group");
@@ -430,8 +449,6 @@ namespace Data.Migrations
                     b.Navigation("Publications");
 
                     b.Navigation("Schelude");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Data.Models.Schelude", b =>
@@ -441,8 +458,6 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.User", b =>
                 {
-                    b.Navigation("Groups");
-
                     b.Navigation("Settings");
                 });
 #pragma warning restore 612, 618
