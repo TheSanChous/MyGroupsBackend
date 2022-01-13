@@ -7,6 +7,7 @@ using System.Net;
 using System.Text.Json;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace MyGroups.WebApi.Middleware
 {
@@ -34,7 +35,7 @@ namespace MyGroups.WebApi.Middleware
         private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             var code = HttpStatusCode.InternalServerError;
-            var errors = new List<object>();
+            var errors = new List<string>();
 
             switch (exception)
             {
@@ -42,8 +43,9 @@ namespace MyGroups.WebApi.Middleware
                     code = HttpStatusCode.BadRequest;
                     errors.AddRange(validationException.Errors.Select(e => e.ErrorMessage));
                     break;
-                case NotFoundException:
+                case NotFoundException notFoundException:
                     code = HttpStatusCode.NotFound;
+                    errors.Add(notFoundException.Message);
                     break;
                 case AuthenticationException authenticationException:
                     code = HttpStatusCode.BadRequest;
@@ -53,6 +55,10 @@ namespace MyGroups.WebApi.Middleware
                     code = HttpStatusCode.Unauthorized;
                     errors.Add(authorizationException.Message);
                     break;
+                case CommandException commandException:
+                    code = HttpStatusCode.BadRequest;
+                    errors.Add(commandException.Message);
+                    break;
                 default:
                     errors.Add(exception.Message);
                     break;
@@ -61,10 +67,7 @@ namespace MyGroups.WebApi.Middleware
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;
 
-            var result = JsonSerializer.Serialize(new
-            {
-                errors = errors
-            });
+            var result = JsonSerializer.Serialize(errors);
 
             return context.Response.WriteAsync(result);
         }

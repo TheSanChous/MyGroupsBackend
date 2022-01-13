@@ -9,7 +9,7 @@ namespace MyGroups.Application.Common.Exceptions
     public class CommandException : Exception
     {
         public CommandException(string message) 
-            : base($"Command error. {message}.")
+            : base($"{message}.")
         {
         }
     }

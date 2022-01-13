@@ -31,11 +31,14 @@ namespace MyGroups.Application.Models.Groups.Commands.JoinGroup
             var group = await databaseContext.Groups
                 .SingleOrDefaultAsync(group => group.Id == request.GroupId, cancellationToken);
 
-
+            if(group is null)
+            {
+                throw new NotFoundException(nameof(Group), request.GroupId);
+            }
 
             if (await IsUserInGroup(user, group, cancellationToken))
             {
-                throw new CommandException("Is is already in group");
+                throw new CommandException("You already in group");
             }
 
             var userGroup = new UserGroup
@@ -47,6 +50,8 @@ namespace MyGroups.Application.Models.Groups.Commands.JoinGroup
 
             await databaseContext.UsersGroups.AddAsync(userGroup, cancellationToken);
 
+            await databaseContext.SaveChangesAsync(cancellationToken);
+            
             return Unit.Value;
         }
 

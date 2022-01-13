@@ -32,6 +32,7 @@ namespace MyGroups.WebApi.Controllers
         [Route("login")]
         public async Task<ActionResult> Login(LoginModel loginModel)
         {
+
             var command = new LoginUserCommand
             {
                 Email = loginModel.Email,

@@ -1,18 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyGroups.Application.Models.Groups.Commands.CreateGroup;
 using MyGroups.Application.Models.Groups.Commands.JoinGroup;
 using MyGroups.Application.Models.Groups.Commands.LeaveGroup;
 using MyGroups.Application.Models.Groups.Queries.GetGroup;
 using MyGroups.Application.Models.Groups.Queries.GetGroupList;
-using MyGroups.Domain.Models.Groups;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using MyGroups.Application.Models.Groups.Queries.GetGroupUsers;
+using MyGroups.Domain.Models.Groups;
+using MyGroups.Application.Models.Groups.Queries.GetRoleInGroup;
+using MyGroups.Application.Models.Tasks.Queries.GetGroupTasks;
 
 namespace MyGroups.WebApi.Controllers
-{ 
+{
     public class GroupController : BaseController
     {
         [HttpGet]
@@ -30,7 +33,7 @@ namespace MyGroups.WebApi.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<GroupListViewModel>> Get([FromRoute] Guid id)
+        public async Task<ActionResult<GroupViewModel>> Get([FromRoute] Guid id)
         {
             var query = new GetGroupQuery
             {
@@ -43,15 +46,15 @@ namespace MyGroups.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateGroupCommand createGroupCommand)
+        public async Task<ActionResult<Guid>> Create(CreateGroupCommand createGroupCommand)
         {
-            await Mediator.Send(createGroupCommand);
+            Guid groupId = await Mediator.Send(createGroupCommand);
 
-            return Ok();
+            return Ok(groupId);
         }
 
-        [HttpPost]
-        [Route("join/{id}")]
+        [HttpGet]
+        [Route("{id}/join")]
         public async Task<ActionResult> Join([FromRoute] Guid id)
         {
             var command = new JoinGroupCommand
@@ -64,8 +67,8 @@ namespace MyGroups.WebApi.Controllers
             return Ok();
         }
 
-        [HttpPost]
-        [Route("leave/{id}")]
+        [HttpGet]
+        [Route("{id}/leave")]
         public async Task<ActionResult> Leave([FromRoute] Guid id)
         {
             var command = new LeaveGroupCommand
@@ -76,6 +79,53 @@ namespace MyGroups.WebApi.Controllers
             await Mediator.Send(command);
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("{id}/members")]
+        public async Task<ActionResult<GroupUsersListViewModel>> GetMembers([FromRoute] Guid id)
+        {
+            var command = new GetGroupUsersQuery
+            {
+                GroupId = id
+            };
+
+            var groupUsersListViewModel = await Mediator.Send(command);
+
+            return Ok(groupUsersListViewModel);
+        }
+        
+        [HttpGet]
+        [Route("{id}/tasks")]
+        public async Task<ActionResult<ICollection<TaskViewModel>>> GetGroupTasks([FromRoute] Guid id)
+        {
+            var query = new GetGroupTasksQuery
+            {
+                GroupId = id
+            };
+
+            var tasks = await Mediator.Send(query);
+
+            return Ok(tasks);
+        }
+        
+        [HttpGet]
+        [Route("{id}/role")]
+        public async Task<ActionResult> GetRole([FromRoute] Guid id)
+        {
+            var query = new GetRoleInGroupQuery
+            {
+                GroupId = id
+            };
+
+            var role = await Mediator.Send(query);
+
+            var response = new
+            {
+                role = Enum.GetName(role)
+            };
+
+            return Ok(response);
         }
     }
 }

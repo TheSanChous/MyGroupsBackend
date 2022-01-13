@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e6b55bcc-0003-4995-bda2-2d0a1e326dee" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Interfaces/IStorageService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroupUsers/GetGroupUsersQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroupUsers/GetGroupUsersQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroupUsers/GetGroupUsersQueryValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroupUsers/GroupUserViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroupUsers/GroupUsersListViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Commands/AppendFileTask/AppendFileTaskCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Commands/AppendFileTask/AppendFileTaskCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetGroupTasks/GetGroupTasksQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetGroupTasks/GetGroupTasksQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetGroupTasks/GetGroupTasksQueryValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetGroupTasks/TaskViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetTaskDetails/GetTaskDetailsQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetTaskDetails/GetTaskDetailsQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetTaskDetails/GetTaskDetailsQueryValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetTaskDetails/TaskDetailsViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetTaskFile/FileViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetTaskFile/GetTaskFileQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Tasks/Queries/GetTaskFile/GetTaskFileQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Domain/Models/Files/File.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Domain/Models/Grades/Grade.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Domain/Models/Tasks/CompletedTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Domain/Models/Tasks/Task.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/DatabaseContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/DatabaseInitializer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/DependencyInjection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/EntityTypeConfigurations/Files/FileConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/EntityTypeConfigurations/Grades/GradeConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/EntityTypeConfigurations/Groups/GroupConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/EntityTypeConfigurations/Groups/UserGroupConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/EntityTypeConfigurations/Tasks/CompletedTaskConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/EntityTypeConfigurations/Tasks/TaskConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/EntityTypeConfigurations/Users/UserConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20211224213421_users-password.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20211224213421_users-password.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20211225023136_users-groups.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20211225023136_users-groups.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20211225033044_users-groups-rename.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20211225033044_users-groups-rename.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20220112170400_update-files.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20220112170400_update-files.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20220112214600_files-update-add-blob-name.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20220112214600_files-update-add-blob-name.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20220112222100_tasks-add-time.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/20220112222100_tasks-add-time.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/Migrations/DatabaseContextModelSnapshot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Persistence/MyGroups.Persistence.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Storage/DependencyInjection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Storage/MyGroups.Storage.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyGroups.Storage/Services/StorageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Common/Behaviors/ValidationBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Common/Behaviors/ValidationBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Common/Exceptions/CommandException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Common/Exceptions/CommandException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Common/Exceptions/NotFoundException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Common/Exceptions/NotFoundException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Interfaces/IDatabaseContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Interfaces/IDatabaseContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Commands/CreateGroup/CreateGroupCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Commands/CreateGroup/CreateGroupCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Commands/JoinGroup/JoinGroupCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Commands/JoinGroup/JoinGroupCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Commands/JoinGroup/JoinGroupCommandValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Commands/JoinGroup/JoinGroupCommandValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroup/GetGroupQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroup/GetGroupQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroup/GroupViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroup/GroupViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroupList/GetGroupsListQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroupList/GetGroupsListQueryHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroupList/GroupListViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroupList/GroupListViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/Models/Groups/Queries/GetGroupList/GroupViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Application/MyGroups.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.Application/MyGroups.Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/DatabaseContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/DatabaseInitializer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/DependencyInjection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/EntityTypeConfigurations/Groups/GroupConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/EntityTypeConfigurations/Groups/UserGroupConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/EntityTypeConfigurations/Users/UserConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/Migrations/20211224213421_users-password.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/Migrations/20211224213421_users-password.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/Migrations/20211225023136_users-groups.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/Migrations/20211225023136_users-groups.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/Migrations/20211225033044_users-groups-rename.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/Migrations/20211225033044_users-groups-rename.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/Migrations/DatabaseContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.Persistance/MyGroups.Persistance.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.WebApi/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.WebApi/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.WebApi/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.WebApi/Controllers/GroupController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.WebApi/Middleware/CustomExceptionHandlerMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.WebApi/Middleware/CustomExceptionHandlerMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.WebApi/MyGroups.WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.WebApi/MyGroups.WebApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.WebApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.WebApi/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.WebApi/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.WebApi/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.WebApi/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.WebApi/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.WebApi/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyGroups.sln" beforeDir="false" afterPath="$PROJECT_DIR$/MyGroups.sln" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="23YYB24f38o6eam1KsLusw9PXY9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunOnceActivity.OpenDatabaseViewOnStart" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+</project>

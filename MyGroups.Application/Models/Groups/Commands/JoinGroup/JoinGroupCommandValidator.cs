@@ -19,7 +19,8 @@ namespace MyGroups.Application.Models.Groups.Commands.JoinGroup
         {
             RuleFor(command => command.GroupId)
                 .NotNull()
-                .NotEmpty();
+                .NotEmpty()
+                .WithMessage("Group id invalid");
         }
     }
 }

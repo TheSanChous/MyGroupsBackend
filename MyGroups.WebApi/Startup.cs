@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,10 +10,12 @@ using Microsoft.OpenApi.Models;
 using MyGroups.Application;
 using MyGroups.Application.Common.Mappings;
 using MyGroups.Application.Interfaces;
-using MyGroups.Persistance;
+using MyGroups.Persistence;
 using MyGroups.WebApi.Middleware;
 using System.Reflection;
 using System.Text;
+using Microsoft.AspNetCore.Mvc;
+using MyGroups.Storage;
 
 namespace MyGroups.WebApi
 {
@@ -48,23 +51,26 @@ namespace MyGroups.WebApi
                 });
 
             services.AddPersistance(Configuration);
+            services.AddStorage();
             services.AddApplication();
 
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.ModelValidatorProviders.Clear();
+            });
+            
+            // Disable custom model validation
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyGroups.WebApi", Version = "v1" });
             });
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll", policy =>
-                {
-                    policy.AllowAnyHeader();
-                    policy.AllowAnyMethod();
-                    policy.AllowAnyOrigin();
-                });
-            });
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -82,12 +88,15 @@ namespace MyGroups.WebApi
 
             app.UseRouting();
 
+            app.UseCors(policy => policy
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)); // allow any origin
+
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseCustomAuthorization(exceptRoute: "/api/Auth");
-
-            app.UseCors("AllowAll");
 
             app.UseEndpoints(endpoints =>
             {

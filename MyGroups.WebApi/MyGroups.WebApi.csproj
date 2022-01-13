@@ -22,7 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyGroups.Persistance\MyGroups.Persistance.csproj" />
+    <ProjectReference Include="..\MyGroups.Persistence\MyGroups.Persistence.csproj" />
+    <ProjectReference Include="..\MyGroups.Storage\MyGroups.Storage.csproj" />
   </ItemGroup>
 
 </Project>
