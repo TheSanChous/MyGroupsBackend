@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using shortid;
 
 namespace MyGroups.Application.Models.Groups.Commands.CreateGroup
 {
-    public class CreateGroupCommandHandler : IRequestHandler<CreateGroupCommand, Guid>
+    public class CreateGroupCommandHandler : IRequestHandler<CreateGroupCommand, string>
     {
         private readonly IDatabaseContext databaseContext;
         private readonly IAuthorizationService authorizationService;
@@ -21,7 +22,7 @@ namespace MyGroups.Application.Models.Groups.Commands.CreateGroup
             this.authorizationService = authorizationService;
         }
 
-        public async Task<Guid> Handle(CreateGroupCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(CreateGroupCommand request, CancellationToken cancellationToken)
         {
             var user = authorizationService.CurrentUser;
 
@@ -29,6 +30,7 @@ namespace MyGroups.Application.Models.Groups.Commands.CreateGroup
             {
                 Title = request.Title,
                 Description = request.Description,
+                Identifier = ShortId.Generate(true, false, 8),
                 CreationDate = DateTime.Now
             };
 
@@ -43,7 +45,7 @@ namespace MyGroups.Application.Models.Groups.Commands.CreateGroup
             await databaseContext.UsersGroups.AddAsync(userGroup, cancellationToken);
             await databaseContext.SaveChangesAsync(cancellationToken);
 
-            return group.Id;
+            return group.Identifier;
         }
     }
 }

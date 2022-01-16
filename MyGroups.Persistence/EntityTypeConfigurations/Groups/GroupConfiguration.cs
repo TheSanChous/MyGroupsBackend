@@ -19,6 +19,9 @@ namespace MyGroups.Persistence.EntityTypeConfigurations.Groups
 
             builder.Property(group => group.Description);
 
+            builder.HasIndex(group => group.Identifier)
+                .IsUnique();
+
             builder.Property(group => group.CreationDate);
         }
     }

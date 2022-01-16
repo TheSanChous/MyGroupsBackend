@@ -16,6 +16,7 @@ namespace MyGroups.Application.Interfaces
     public interface IDatabaseContext
     {
         DbSet<Domain.Models.Tasks.Task> Tasks { get; set; }
+        DbSet<Domain.Models.Tasks.CompletedTask> CompletedTasks { get; set; }
         DbSet<Grade> Grades { get; set; }
         DbSet<File> Files { get; set; }
         DbSet<UserGroup> UsersGroups { get; set; }

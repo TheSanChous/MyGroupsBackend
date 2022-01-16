@@ -22,7 +22,7 @@ namespace MyGroups.Storage.Services
         }
 
         public async Task<FileInfo> SaveFileAsync(string fileName, Stream fileStream,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var blobName = $"{Guid.NewGuid().ToString()}_{fileName}";
             
@@ -38,7 +38,7 @@ namespace MyGroups.Storage.Services
             };
         }
 
-        public async Task DeleteFileAsync(string blobName, CancellationToken cancellationToken)
+        public async Task DeleteFileAsync(string blobName, CancellationToken cancellationToken = default)
         {
             await _blobContainerClient.DeleteBlobAsync(blobName, cancellationToken: cancellationToken);
         }

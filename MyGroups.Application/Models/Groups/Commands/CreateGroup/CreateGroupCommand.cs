@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyGroups.Application.Models.Groups.Commands.CreateGroup
 {
-    public class CreateGroupCommand : IRequest<Guid>
+    public class CreateGroupCommand : IRequest<string>
     {
         public string Title { get; set; }
         public string Description { get; set; }

@@ -17,7 +17,8 @@ namespace MyGroups.Application.Models.Groups.Commands.JoinGroup
     {
         public JoinGroupCommandValidator()
         {
-            RuleFor(command => command.GroupId)
+            RuleFor(command => command.GroupIdentifier)
+                .Length(8)
                 .NotNull()
                 .NotEmpty()
                 .WithMessage("Group id invalid");

@@ -10,6 +10,7 @@ namespace MyGroups.Domain.Models.Groups
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Identifier { get; set; }
         public DateTime CreationDate { get; set; }
     }
 }

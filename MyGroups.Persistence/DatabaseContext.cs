@@ -11,6 +11,7 @@ namespace MyGroups.Persistence
     public class DatabaseContext : DbContext, IDatabaseContext
     {
         public DbSet<Domain.Models.Tasks.Task> Tasks { get; set; }
+        public DbSet<Domain.Models.Tasks.CompletedTask> CompletedTasks { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<File> Files { get; set; }
         public DbSet<UserGroup> UsersGroups { get; set; }

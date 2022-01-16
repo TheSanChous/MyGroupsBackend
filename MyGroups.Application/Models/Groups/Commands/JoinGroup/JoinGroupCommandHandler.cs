@@ -29,11 +29,11 @@ namespace MyGroups.Application.Models.Groups.Commands.JoinGroup
             var user = authorizationService.CurrentUser;
 
             var group = await databaseContext.Groups
-                .SingleOrDefaultAsync(group => group.Id == request.GroupId, cancellationToken);
+                .SingleOrDefaultAsync(group => group.Identifier == request.GroupIdentifier, cancellationToken);
 
             if(group is null)
             {
-                throw new NotFoundException(nameof(Group), request.GroupId);
+                throw new NotFoundException(nameof(Group), request.GroupIdentifier);
             }
 
             if (await IsUserInGroup(user, group, cancellationToken))

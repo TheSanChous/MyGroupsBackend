@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using MyGroups.Application.Models.Groups.Queries.GetGroupByIdentifier;
 using MyGroups.Application.Models.Groups.Queries.GetGroupUsers;
 using MyGroups.Domain.Models.Groups;
 using MyGroups.Application.Models.Groups.Queries.GetRoleInGroup;
@@ -44,22 +45,39 @@ namespace MyGroups.WebApi.Controllers
 
             return Ok(viewModel);
         }
+        
+        [HttpGet]
+        [Route("identifier/{id}")]
+        public async Task<ActionResult<GroupViewModel>> Get([FromRoute] string id)
+        {
+            var query = new GetGroupByIdentifierQuery()
+            {
+                GroupIdentifier = id
+            };
+
+            var viewModel = await Mediator.Send(query);
+
+            return Ok(viewModel);
+        }
 
         [HttpPost]
-        public async Task<ActionResult<Guid>> Create(CreateGroupCommand createGroupCommand)
+        public async Task<ActionResult> Create(CreateGroupCommand createGroupCommand)
         {
-            Guid groupId = await Mediator.Send(createGroupCommand);
+            string groupIdentifier = await Mediator.Send(createGroupCommand);
 
-            return Ok(groupId);
+            return Ok(new
+            {
+                Identifier = groupIdentifier
+            });
         }
 
         [HttpGet]
         [Route("{id}/join")]
-        public async Task<ActionResult> Join([FromRoute] Guid id)
+        public async Task<ActionResult> Join([FromRoute] string id)
         {
             var command = new JoinGroupCommand
             {
-                GroupId = id
+                GroupIdentifier = id
             };
 
             await Mediator.Send(command);

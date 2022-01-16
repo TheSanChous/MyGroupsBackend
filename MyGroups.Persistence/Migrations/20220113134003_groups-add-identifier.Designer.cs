@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyGroups.Persistence;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -9,9 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyGroups.Persistence.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220113134003_groups-add-identifier")]
+    partial class groupsaddidentifier
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,9 +125,6 @@ namespace MyGroups.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
@@ -141,12 +140,7 @@ namespace MyGroups.Persistence.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("UploadedAt")
-                        .HasColumnType("timestamp without time zone");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CreatorId");
 
                     b.HasIndex("FileId");
 
@@ -154,7 +148,7 @@ namespace MyGroups.Persistence.Migrations
 
                     b.HasIndex("TaskId");
 
-                    b.ToTable("CompletedTasks");
+                    b.ToTable("CompletedTask");
                 });
 
             modelBuilder.Entity("MyGroups.Domain.Models.Tasks.Task", b =>
@@ -256,10 +250,6 @@ namespace MyGroups.Persistence.Migrations
 
             modelBuilder.Entity("MyGroups.Domain.Models.Tasks.CompletedTask", b =>
                 {
-                    b.HasOne("MyGroups.Domain.Models.Users.User", "Creator")
-                        .WithMany()
-                        .HasForeignKey("CreatorId");
-
                     b.HasOne("MyGroups.Domain.Models.Files.File", "File")
                         .WithMany()
                         .HasForeignKey("FileId");
@@ -271,8 +261,6 @@ namespace MyGroups.Persistence.Migrations
                     b.HasOne("MyGroups.Domain.Models.Tasks.Task", "Task")
                         .WithMany()
                         .HasForeignKey("TaskId");
-
-                    b.Navigation("Creator");
 
                     b.Navigation("File");
 

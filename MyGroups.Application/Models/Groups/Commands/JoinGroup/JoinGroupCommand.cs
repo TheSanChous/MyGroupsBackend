@@ -9,6 +9,6 @@ namespace MyGroups.Application.Models.Groups.Commands.JoinGroup
 {
     public class JoinGroupCommand : IRequest
     {
-        public Guid GroupId { get; set; }
+        public string GroupIdentifier { get; set; }
     }
 }
