@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using MyGroups.Application.Interfaces;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MyGroups.Infrastructure.Abstractions;
 using MyGroups.Storage.Services;
 
 namespace MyGroups.Storage

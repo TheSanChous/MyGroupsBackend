@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyGroups.Application.Models.Users.Commands.Login;
-using MyGroups.Application.Models.Users.Commands.Register;
+using MyGroups.Application.SQRS.Users.Commands.Login;
+using MyGroups.Application.SQRS.Users.Commands.Register;
 using MyGroups.WebApi.Models.Authentication;
 using System;
 using System.Collections.Generic;

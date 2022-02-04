@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MyGroups.Application.Models.Tasks.Commands.CreateTask;
+using MyGroups.Application.SQRS.Tasks.Commands.CreateTask;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using MyGroups.Application.Models.Tasks.Queries.GetGroupTasks;
-using MyGroups.Application.Models.Tasks.Commands.AppendFileTask;
-using MyGroups.Application.Models.Tasks.Commands.DeleteTask;
-using MyGroups.Application.Models.Tasks.Queries.GetTaskDetails;
-using MyGroups.Application.Models.Tasks.Queries.GetTaskFile;
+using MyGroups.Application.SQRS.Tasks.Queries.GetGroupTasks;
+using MyGroups.Application.SQRS.Tasks.Commands.AppendFileTask;
+using MyGroups.Application.SQRS.Tasks.Commands.DeleteTask;
+using MyGroups.Application.SQRS.Tasks.Queries.GetTaskDetails;
+using MyGroups.Application.SQRS.Tasks.Queries.GetTaskFile;
 
 namespace MyGroups.WebApi.Controllers
 {

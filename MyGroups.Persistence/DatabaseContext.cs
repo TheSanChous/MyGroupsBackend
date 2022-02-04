@@ -4,6 +4,7 @@ using MyGroups.Domain.Models.Files;
 using MyGroups.Domain.Models.Grades;
 using MyGroups.Domain.Models.Groups;
 using MyGroups.Domain.Models.Users;
+using MyGroups.Infrastructure.Abstractions;
 using System.Reflection;
 
 namespace MyGroups.Persistence

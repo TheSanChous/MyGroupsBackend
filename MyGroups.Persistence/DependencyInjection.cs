@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyGroups.Application.Common.Authorization;
 using MyGroups.Application.Interfaces;
+using MyGroups.Infrastructure.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

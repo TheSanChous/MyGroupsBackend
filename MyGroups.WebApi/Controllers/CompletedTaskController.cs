@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyGroups.Application.Models.CompletedTask.Commands;
+using MyGroups.Application.SQRS.CompletedTask.Commands;
 
 namespace MyGroups.WebApi.Controllers
 {

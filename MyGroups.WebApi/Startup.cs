@@ -16,6 +16,7 @@ using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using MyGroups.Storage;
+using MyGroups.Infrastructure.Abstractions;
 
 namespace MyGroups.WebApi
 {
@@ -75,12 +76,9 @@ namespace MyGroups.WebApi
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyGroups.WebApi v1"));
-            }
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyGroups.WebApi v1"));
 
             app.UseCustomExceptionHandler();
 

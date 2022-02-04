@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MyGroups.Application.Models.Users.Queries.GetInfo;
+using MyGroups.Application.SQRS.Users.Queries.GetInfo;
 using System;
 using System.Collections.Generic;
 using System.Linq;

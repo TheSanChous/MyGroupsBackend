@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.IdentityModel.Protocols;
 
 namespace MyGroups.WebApi
 {
@@ -26,7 +27,7 @@ namespace MyGroups.WebApi
                 }
                 catch(Exception exception)
                 {
-
+                    Console.WriteLine(exception.Message);
                 }
             }
 
@@ -38,6 +39,10 @@ namespace MyGroups.WebApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    if (Environment.GetEnvironmentVariable("IS_HEROKU") == "TRUE")
+                    {
+                        webBuilder.UseUrls("http://*:" + Environment.GetEnvironmentVariable("PORT"));
+                    }
                 });
     }
 }

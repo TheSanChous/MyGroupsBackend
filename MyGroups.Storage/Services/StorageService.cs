@@ -3,10 +3,8 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using MyGroups.Application.Interfaces;
-using Azure.Storage;
 using Azure.Storage.Blobs;
-using FileInfo = MyGroups.Application.Interfaces.FileInfo;
+using MyGroups.Infrastructure.Abstractions;
 
 namespace MyGroups.Storage.Services
 {
@@ -21,7 +19,7 @@ namespace MyGroups.Storage.Services
             _blobContainerClient.CreateIfNotExists();
         }
 
-        public async Task<FileInfo> SaveFileAsync(string fileName, Stream fileStream,
+        public async Task<BlobFileInfo> SaveFileAsync(string fileName, Stream fileStream,
             CancellationToken cancellationToken = default)
         {
             var blobName = $"{Guid.NewGuid().ToString()}_{fileName}";
@@ -30,7 +28,7 @@ namespace MyGroups.Storage.Services
 
             await blobClient.UploadAsync(fileStream, cancellationToken);
 
-            return new FileInfo
+            return new BlobFileInfo
             {
                 FileName = fileName,
                 BlobName = blobName,

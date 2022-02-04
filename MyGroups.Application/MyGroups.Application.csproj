@@ -10,6 +10,9 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.6" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="shortid" Version="3.0.1" />
@@ -18,11 +21,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyGroups.Domain\MyGroups.Domain.csproj" />
+    <ProjectReference Include="..\MyGroups.Infrastructure.Abstractions\MyGroups.Infrastructure.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\CompletedTask\Queries" />
-    <Folder Include="Models\Tasks\Queries\" />
+    <Folder Include="SQRS\CompletedTask\Queries" />
   </ItemGroup>
 
   <ItemGroup>

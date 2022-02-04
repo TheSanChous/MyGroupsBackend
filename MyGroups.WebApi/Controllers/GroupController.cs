@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyGroups.Application.Models.Groups.Commands.CreateGroup;
-using MyGroups.Application.Models.Groups.Commands.JoinGroup;
-using MyGroups.Application.Models.Groups.Commands.LeaveGroup;
-using MyGroups.Application.Models.Groups.Queries.GetGroup;
-using MyGroups.Application.Models.Groups.Queries.GetGroupList;
+using MyGroups.Application.SQRS.Groups.Commands.CreateGroup;
+using MyGroups.Application.SQRS.Groups.Commands.JoinGroup;
+using MyGroups.Application.SQRS.Groups.Commands.LeaveGroup;
+using MyGroups.Application.SQRS.Groups.Queries.GetGroup;
+using MyGroups.Application.SQRS.Groups.Queries.GetGroupList;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using MyGroups.Application.Models.Groups.Queries.GetGroupByIdentifier;
-using MyGroups.Application.Models.Groups.Queries.GetGroupUsers;
+using MyGroups.Application.SQRS.Groups.Queries.GetGroupByIdentifier;
+using MyGroups.Application.SQRS.Groups.Queries.GetGroupUsers;
 using MyGroups.Domain.Models.Groups;
-using MyGroups.Application.Models.Groups.Queries.GetRoleInGroup;
-using MyGroups.Application.Models.Tasks.Queries.GetGroupTasks;
+using MyGroups.Application.SQRS.Groups.Queries.GetRoleInGroup;
+using MyGroups.Application.SQRS.Tasks.Queries.GetGroupTasks;
 
 namespace MyGroups.WebApi.Controllers
 {
