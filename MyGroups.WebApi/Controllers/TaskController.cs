@@ -12,11 +12,20 @@ using MyGroups.Application.SQRS.Tasks.Commands.AppendFileTask;
 using MyGroups.Application.SQRS.Tasks.Commands.DeleteTask;
 using MyGroups.Application.SQRS.Tasks.Queries.GetTaskDetails;
 using MyGroups.Application.SQRS.Tasks.Queries.GetTaskFile;
+using MyGroups.Application.SQRS.Tasks.Queries.GetUserTasks;
 
 namespace MyGroups.WebApi.Controllers
 {
     public class TaskController : BaseController
     {
+        [HttpGet]
+        public async Task<ActionResult<ICollection<TaskViewModel>>> GetTasks()
+        {
+            var tasks = await Mediator.Send(new GetUserTasksCommand());
+
+            return Ok(tasks);
+        }
+
         [HttpGet]
         [Route("{id}")]
         public async Task<ActionResult<TaskDetailsViewModel>> GetTaskDetails([FromRoute] Guid id)

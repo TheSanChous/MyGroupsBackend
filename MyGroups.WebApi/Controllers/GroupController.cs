@@ -22,12 +22,7 @@ namespace MyGroups.WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<GroupListViewModel>> GetAll()
         {
-            var query = new GetGroupListQuery
-            {
-                Id = Guid.Empty
-            };
-
-            var viewModel = await Mediator.Send(query);
+            var viewModel = await Mediator.Send(new GetGroupListQuery());
 
             return Ok(viewModel);
         }

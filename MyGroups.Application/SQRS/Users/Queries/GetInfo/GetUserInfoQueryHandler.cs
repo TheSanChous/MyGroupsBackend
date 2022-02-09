@@ -22,11 +22,11 @@ namespace MyGroups.Application.SQRS.Users.Queries.GetInfo
             this.mapper = mapper;
         }
 
-        public Task<UserInfoViewModel> Handle(GetUserInfoQuery request, CancellationToken cancellationToken)
+        public async Task<UserInfoViewModel> Handle(GetUserInfoQuery request, CancellationToken cancellationToken)
         {
             var user = authorizationService.CurrentUser;
 
-            return Task.FromResult(mapper.Map<UserInfoViewModel>(user));
+            return mapper.Map<UserInfoViewModel>(user);
         }
     }
 }

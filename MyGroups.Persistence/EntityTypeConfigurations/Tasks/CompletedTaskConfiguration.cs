@@ -14,8 +14,9 @@ namespace MyGroups.Persistence.EntityTypeConfigurations.Tasks
             builder.Property(completedTask => completedTask.UploadedAt);
             builder.HasOne(completedTask => completedTask.Creator);
             builder.HasOne(completedTask => completedTask.File);
+            builder.HasOne(completedTask => completedTask.Grade)
+                .WithOne(g => g.CompletedTask);
             builder.HasOne(completedTask => completedTask.Task);
-            builder.HasOne(completedTask => completedTask.Grade);
         }
     }
 }

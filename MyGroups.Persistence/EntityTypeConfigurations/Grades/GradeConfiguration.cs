@@ -11,7 +11,7 @@ namespace MyGroups.Persistence.EntityTypeConfigurations.Grades
             builder.HasKey(grade => grade.Id);
             builder.Property(grade => grade.Description);
             builder.Property(grade => grade.Value);
-            builder.HasOne(grade => grade.User);
+            builder.HasOne(grade => grade.CompletedTask);
             builder.HasOne(grade => grade.Evaluator);
         }
     }

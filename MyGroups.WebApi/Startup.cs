@@ -34,7 +34,7 @@ namespace MyGroups.WebApi
             services.AddAutoMapper(config =>
             {
                 config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-                config.AddProfile(new AssemblyMappingProfile(typeof(IDatabaseContext).Assembly));
+                config.AddProfile(new AssemblyMappingProfile(typeof(DependecyInjection).Assembly));
             });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

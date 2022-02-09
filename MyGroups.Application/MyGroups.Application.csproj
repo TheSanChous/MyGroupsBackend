@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SQRS\CompletedTask\Queries" />
+    <Folder Include="SQRS\CompletedTasks\Queries\GetTask\" />
   </ItemGroup>
 
   <ItemGroup>

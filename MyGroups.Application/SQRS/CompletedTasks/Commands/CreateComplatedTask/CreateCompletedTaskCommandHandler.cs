@@ -10,7 +10,7 @@ using MyGroups.Domain.Models.Groups;
 using MyGroups.Infrastructure.Abstractions;
 using Task = MyGroups.Domain.Models.Tasks.Task;
 
-namespace MyGroups.Application.SQRS.CompletedTask.Commands
+namespace MyGroups.Application.SQRS.CompletedTasks.Commands.CreateComplatedTask
 {
     public class CreateCompletedTaskCommandHandler : IRequestHandler<CreateCompletedTaskCommand, Guid>
     {
@@ -58,7 +58,7 @@ namespace MyGroups.Application.SQRS.CompletedTask.Commands
             var newCompletedTask = new Domain.Models.Tasks.CompletedTask
             {
                 Id = Guid.NewGuid(),
-                Title = request.Title,
+                Title = "",
                 Description = request.Description,
                 Creator = user,
                 Task = task,

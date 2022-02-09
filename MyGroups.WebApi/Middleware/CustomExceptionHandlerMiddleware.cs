@@ -8,16 +8,19 @@ using System.Text.Json;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Microsoft.Extensions.Configuration;
 
 namespace MyGroups.WebApi.Middleware
 {
     public class CustomExceptionHandlerMiddleware
     {
         private readonly RequestDelegate next;
+        private readonly IConfiguration configuration;
 
-        public CustomExceptionHandlerMiddleware(RequestDelegate next)
+        public CustomExceptionHandlerMiddleware(RequestDelegate next, IConfiguration configuration)
         {
             this.next = next;
+            this.configuration = configuration;
         }
 
         public async Task Invoke(HttpContext context)

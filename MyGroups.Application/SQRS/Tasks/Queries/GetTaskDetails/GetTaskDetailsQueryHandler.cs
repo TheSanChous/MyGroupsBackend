@@ -29,6 +29,7 @@ namespace MyGroups.Application.SQRS.Tasks.Queries.GetTaskDetails
             var user = _authorizationService.CurrentUser;
 
             var task = await _databaseContext.Tasks
+                .Include(task => task.Group)
                 .FirstOrDefaultAsync(task => task.Id == request.TaskId, cancellationToken);
 
             return _mapper.Map<TaskDetailsViewModel>(task);

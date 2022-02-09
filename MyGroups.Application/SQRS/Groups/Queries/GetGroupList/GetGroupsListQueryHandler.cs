@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using MyGroups.Application.Interfaces;
 using MyGroups.Application.SQRS.Groups.Queries.GetGroup;
+using MyGroups.Domain.Models.Groups;
 using MyGroups.Infrastructure.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -32,18 +33,20 @@ namespace MyGroups.Application.SQRS.Groups.Queries.GetGroupList
         public async Task<GroupListViewModel> Handle(GetGroupListQuery request, CancellationToken cancellationToken)
         {
             var user = _authorizationService.CurrentUser;
-            
-            var groupsQuery = await databaseContext.UsersGroups
+
+            UserGroup[] groupsQuery = await databaseContext.UsersGroups
                 .Include(userGroup => userGroup.Group)
                 .Include(userGroup => userGroup.User)
                 .Where(group => group.User == user)
-                .Select(group => group.Group)
-                .ProjectTo<GroupViewModel>(mapper.ConfigurationProvider)
-                .ToListAsync(cancellationToken);
+                .ToArrayAsync(cancellationToken);
+
+            var result = groupsQuery
+                .Select(group => mapper.Map<GroupViewModel>(group.Group))
+                .ToList();
 
             return new GroupListViewModel
             {
-                Groups = groupsQuery
+                Groups = result
             };
         }
     }
